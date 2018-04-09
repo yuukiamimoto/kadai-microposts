@@ -1,0 +1,14 @@
+<% unless current_user == user %>
+  <% if current_user.tweeting?(micropost) %>
+    <%= form_for(current_user.favorites.find_by(micropost_id: micropost.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :tweet_id, micropost.id %>
+      <%= f.submit 'Untweet', class: 'btn btn-danger btn-xs' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_user.favorites.build) do |f| %>
+      <%= hidden_field_tag :tweet_id, micropost.id %>
+      <%= f.submit 'Tweet', class: 'btn btn-primary btn-xs' %>
+    <% end %>
+  <% end %>
+<% end %>
+

@@ -16,6 +16,13 @@
             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-xs' %>
           <% end %>
         </div>
+        <!--<div>-->
+        <!--  <%# if current_user != micropost.user %>-->
+        <!--    <%#= link_to "お気に入り", micropost, method: :tweets, class: 'btn btn-warning btn-xs' %>-->
+        <!--  <%# end %>-->
+        <!--</div>-->
+        
+        <%= render 'favorites/tweet_button', user: micropost.user, micropost: micropost %>
       </div>
     </li>
   <% end %>
